@@ -1,7 +1,6 @@
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.LocalDateTime;
@@ -35,11 +34,11 @@ public class Digital_clock extends JFrame {
         outerPanel.setBackground(new Color(10, 14, 23));
         outerPanel.setBorder(BorderFactory.createEmptyBorder(24, 24, 24, 24));
 
-        JPanel clockCard = new JPanel(new GridLayout(3, 1, 0, 6));
+        JPanel clockCard = new JPanel(new BorderLayout(0, 10));
         clockCard.setBackground(new Color(25, 32, 48));
         clockCard.setBorder(BorderFactory.createCompoundBorder(
                 new LineBorder(new Color(72, 84, 112), 1, true),
-                BorderFactory.createEmptyBorder(20, 20, 16, 20)
+                BorderFactory.createEmptyBorder(20, 20, 18, 20)
         ));
 
         JLabel titleLabel = new JLabel("WATCH", SwingConstants.CENTER);
@@ -47,18 +46,19 @@ public class Digital_clock extends JFrame {
         titleLabel.setForeground(new Color(139, 154, 184));
 
         timeLabel = new JLabel();
-        timeLabel.setFont(new Font("Consolas", Font.BOLD, 74));
+        timeLabel.setFont(new Font(Font.MONOSPACED, Font.BOLD, 72));
         timeLabel.setHorizontalAlignment(SwingConstants.CENTER);
         timeLabel.setForeground(new Color(88, 214, 141));
+        timeLabel.setBorder(BorderFactory.createEmptyBorder(6, 0, 6, 0));
 
         dateLabel = new JLabel();
         dateLabel.setFont(new Font("Segoe UI", Font.PLAIN, 22));
         dateLabel.setHorizontalAlignment(SwingConstants.CENTER);
         dateLabel.setForeground(new Color(196, 207, 231));
 
-        clockCard.add(titleLabel);
-        clockCard.add(timeLabel);
-        clockCard.add(dateLabel);
+        clockCard.add(titleLabel, BorderLayout.NORTH);
+        clockCard.add(timeLabel, BorderLayout.CENTER);
+        clockCard.add(dateLabel, BorderLayout.SOUTH);
         outerPanel.add(clockCard, BorderLayout.CENTER);
 
         add(outerPanel);
